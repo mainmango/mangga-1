@@ -1,3 +1,5 @@
 # mangga
 
-A manga downloader CLI tool.
+> A manga downloader CLI tool.
+
+Work in progress.

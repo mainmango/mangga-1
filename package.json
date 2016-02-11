@@ -6,7 +6,10 @@
   "scripts": {
     "build": "rm -rf lib && babel --source-maps inline --copy-files src --out-dir lib",
     "test": "node test | tap-spec",
-    "test:babel": "babel-node test | tap-spec"
+    "test:babel": "babel-node test | tap-spec",
+    "preversion": "npm test",
+    "version": "npm run build && git add -A",
+    "postversion": "git push && git push --tags"
   },
   "author": "Richard Neil Ilagan <me@richardneililagan.com>",
   "license": "MIT",

@@ -1,3 +1,5 @@
+const chalk = require('chalk')
+
 const intersect = require('lodash/intersection')
 const union = require('lodash/union')
 const unique = require('lodash/uniq')
@@ -48,9 +50,11 @@ function updateCmd (providers) {
   .then(filteredResults => {
     task.details(`Updating ${ filteredResults.length } records`)
     return db.bulkDocs(filteredResults)
+      .then(_ => filteredResults)
   })
   .then(_ => {
-    task.done().details('Local catalog updated.')
+    task.done()
+      .details(`Local catalog current. ${ chalk.bold.cyan(_.length + ' records updated.') }`)
   })
 }
 
